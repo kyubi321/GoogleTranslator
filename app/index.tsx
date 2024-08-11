@@ -21,7 +21,7 @@ export default function Home() {
         <Text className='font-semibold text-2xl text-blue-600'>Spanish</Text>
       </View>
       {/* input box */}
-      <View className='border rounded-2xl gap-4 border-gray-500 flex-1  p-3'>
+      <View className='border rounded-2xl gap-4 border-gray-500 flex-1 p-3'>
         <View className='flex-row'>
           <TextInput  
             placeholder="enter your text... " className='min-h-32  p-1 text-xl'
@@ -46,6 +46,35 @@ export default function Home() {
        
       
       </View>
+      {/* output container */}
+      <View className='rounded-2xl mt-2 bg-slate-300 p-4'>
+        
+        <View className=''>
+        
+          <Text className='text-2xl font-semibold'>Output</Text>
+          <TextInput
+            placeholder=" " className='min-h-32  p-1 text-xl'
+            value={input}
+            onChangeText={setInput}
+            multiline maxLength={5000}>
+
+          </TextInput>
+          <View className='flex-row justify-between'>
+          <Pressable className=" ">
+		        <FontAwesome6 name="volume-high" size={19} color="dimgray" className='' />
+		      </Pressable>
+          <Pressable className=" ">
+		        <FontAwesome6 name="copy" size={19} color="dimgray" className='' />
+		      </Pressable>
+          </View>
+        
+        </View>
+
+
+      </View>
+      
+     
+
       </ScrollView>
     </>
   );
