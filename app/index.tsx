@@ -10,6 +10,11 @@ import { useState } from 'react';
 export default function Home() {
   const [input,setInput]=useState('');
   const [output,setOutput]=useState('');
+
+  const onTranslate = () =>{
+    const Translation = input;
+    setOutput(Translation)
+  }
   return (
     <>
       <Stack.Screen options={{ title: 'Translate',headerTitleAlign:'center'}} />
@@ -30,7 +35,7 @@ export default function Home() {
             multiline maxLength={5000}>
 
         </TextInput>
-        <Pressable className='ml-auto mb-auto'>
+        <Pressable className='ml-auto mb-auto' onPress={()=>onTranslate()}>
         <FontAwesome6 name='circle-arrow-right'
           size={24}
           color='royalblue'
@@ -47,18 +52,15 @@ export default function Home() {
       
       </View>
       {/* output container */}
-      <View className='rounded-2xl mt-2 bg-slate-300 p-4'>
+      {/* now we conditionally render the output box //as in the og
+      google translate which renders only of there is nay output present. */}
+      
+      {output && (<View className='rounded-2xl mt-2 bg-slate-300 p-4'>
         
         <View className=''>
         
-          <Text className='text-2xl font-semibold'>Output</Text>
-          <TextInput
-            placeholder=" " className='min-h-32  p-1 text-xl'
-            value={input}
-            onChangeText={setInput}
-            multiline maxLength={5000}>
-
-          </TextInput>
+          <Text className='text-2xl min-h-32 font-semibold '>{output}</Text>
+          
           <View className='flex-row justify-between'>
           <Pressable className=" ">
 		        <FontAwesome6 name="volume-high" size={19} color="dimgray" className='' />
@@ -72,6 +74,7 @@ export default function Home() {
 
 
       </View>
+      )}
       
      
 
